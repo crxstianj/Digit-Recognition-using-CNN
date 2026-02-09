@@ -1,0 +1,20 @@
+services:
+  fastapi:  # Nombre del servicio (API con FastAPI)
+    build: .  # Construye la imagen usando el Dockerfile en el directorio actual
+    container_name: api_server  # Nombre del contenedor
+    ports:
+      - "3000:3000"  # Mapea el puerto del contenedor al host (HOST:CONTENEDOR)
+    volumes:
+      - .:/app  # Sincroniza los archivos locales con los del contenedor
+    depends_on:
+      - webserver  # Se asegura de que el webserver se inicie antes
+
+  webserver:  # Servicio para servir el HTML con Python HTTP server
+    image: python:3.11  # Usa una imagen oficial de Python
+    container_name: web_server
+    working_dir: /web  # Directorio dentro del contenedor
+    volumes:
+      - ./web:/web  # Sincroniza la carpeta `web/` con el contenedor
+    ports:
+      - "8000:8000"  # Expone el HTML en el puerto 8000
+    command: python -m http.server 8000  # Comando para iniciar el servidor web
