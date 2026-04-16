@@ -7,6 +7,10 @@
 3. FastAPI carga el modelo y expone un endpoint `/predict` que recibe una imagen y devuelve el dígito predicho
 4. Una interfaz web permite dibujar un dígito y enviarlo directamente a la API
 
+<p align=center>
+<img width="450" src="https://github.com/user-attachments/assets/8564a89a-efbc-417c-9d69-9a1cb76556d5" />
+</p>
+
 ## Arquitectura del modelo
 
 La CNN consta de dos bloques convolucionales seguidos de un clasificador:
